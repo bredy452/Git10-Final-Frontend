@@ -22,7 +22,7 @@ export default class NewForm extends Component {
         e.preventDefault()
         //fetch and update props{addBookmark in app}
         console.log(this.state)
-        fetch(`${this.props.baseUrl}/bookmarks`, {
+        fetch(`${this.props.baseUrl}/gifs`, {
             method: 'POST', 
             body: JSON.stringify({
                 //below is where the other attributes get put...
