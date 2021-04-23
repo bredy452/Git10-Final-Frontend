@@ -34,7 +34,7 @@ deleteSubmit = (e) => {
 
 
     render() {
-        console.log(this.state)
+        console.log(this.props.user.username)
         return (
             <>
             <button onClick={ (e) => this.deleteSubmit(e)}> Logout </button>
