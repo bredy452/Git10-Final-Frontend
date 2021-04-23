@@ -4,13 +4,17 @@ export default class Logout extends Component {
 
         constructor(props) {
             super(props)
-         
     }
 
 deleteSubmit = (e) => {
     e.preventDefault()
     fetch(`${this.props.baseUrl}/sessions`, {
         method: 'DELETE',
+        body: JSON.stringify({
+            //below is where the other attributes get put...
+            username: this.props.user.username,
+            password: this.props.user.password,
+        }),
             headers: {
                 'Content-Type': 'application/json'
             },
