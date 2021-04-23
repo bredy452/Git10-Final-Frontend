@@ -98,6 +98,7 @@ export default class App extends Component {
           // const copySession = [...this.state.user]
           // copySession.splice(findIndex, 1)
           localStorage.clear()
+          localStorage.removeItem('user')
           this.setState({
             user: '',
             session: false,
