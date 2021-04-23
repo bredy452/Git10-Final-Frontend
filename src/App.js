@@ -126,7 +126,7 @@ export default class App extends Component {
            <NewForm baseUrl={baseUrl} addGifs={this.addGif}/>
            <ShowGifs newGif={this.state.gifs} getGifs={this.getGifs} baseUrl={baseUrl}/>
        </div>,
-            <Logout user={this.user} getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession}  />])
+            <Logout user={this.state.user} getUser={this.getUser} baseUrl={baseUrl} deleteSession={this.deleteSession}  />])
               
           } else {
          return ([<Login checkSession={this.checkLogin} baseUrl={baseUrl} addSessions={this.addSession} />,
