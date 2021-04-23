@@ -9,8 +9,7 @@ export default class Logout extends Component {
 
 deleteSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
-    fetch(`${this.props.baseUrl}/sessions/signout`, {
+    fetch(`${this.props.baseUrl}/sessions`, {
         method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
