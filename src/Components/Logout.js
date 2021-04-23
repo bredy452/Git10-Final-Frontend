@@ -12,8 +12,8 @@ deleteSubmit = (e) => {
         method: 'DELETE',
         body: JSON.stringify({
             //below is where the other attributes get put...
-            username: this.props.user.username,
-            password: this.props.user.password,
+            username: this.props.user,
+            // password: this.props.user.password,
         }),
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ deleteSubmit = (e) => {
 
 
     render() {
-        console.log(this.props.user.username)
+        console.log(this.props.user)
         return (
             <>
             <button onClick={ (e) => this.deleteSubmit(e)}> Logout </button>
