@@ -26,7 +26,6 @@ export default class NewForm extends Component {
         fetch(`${this.props.baseUrl}/gifs`, {
             method: 'POST',
             body: JSON.stringify({
-                //below is where the other attributes get put...
                 name: this.state.name,
                 url: this.state.url,
                 descrption: this.state.description

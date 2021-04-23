@@ -4,9 +4,7 @@ import Edit from './Edit'
 import { Divider, Image } from 'semantic-ui-react'
 
 export default function ShowGifs(props) {
-  
 
-// Looks like I gotta create the JWT on the app side as well at login or on app.js?
 
 
 
