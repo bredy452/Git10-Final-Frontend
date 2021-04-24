@@ -4,16 +4,15 @@ export default class EditForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name:this.props.name,
-            url: this.props.url,
-            description: this.props.description
+            name:this.props.gif.name,
+            url: this.props.gif.url,
+            description: this.props.gif.description
         }
         // this.handleChange = this.handleChange.bind(this)
     }
 
 
     handleChange = (e) => {
-        console.log(this.state)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -21,19 +20,16 @@ export default class EditForm extends Component {
 
      handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.props.baseUrl)
         //fetch and update props{addBookmark in app}
-        console.log(this.state)
-        console.log(this.props.id)
-        console.log(this.props.description)
-        fetch(`${this.props.baseUrl}/gifs/${this.props.id}`,  {
+        
+        fetch(`${this.props.baseUrl}/gifs/${this.props.gif._id}`,  {
             method: 'PUT', 
             body: JSON.stringify({
                 //below is where the other attributes get put...
                 name: this.state.name,
                 url: this.state.url,
                 description: this.state.description,
-                id: this.props.id
+                id: this.props.gif._id
             }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,6 +44,7 @@ export default class EditForm extends Component {
   
 
     render() {
+        console.log(this.state)
         return (
             <>
             <form onSubmit={ (e) => this.handleSubmit(e)}>

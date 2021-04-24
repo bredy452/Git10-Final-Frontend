@@ -1,65 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
+import EditForm from './EditForm'
 
-export default class EditForm extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name:this.props.gif.name,
-            url: this.props.gif.url,
-            description: this.props.gif.description
-        }
-        // this.handleChange = this.handleChange.bind(this)
-    }
+import { Button, Modal } from 'semantic-ui-react'
 
+export default function Edits(props) {
+const [open, setOpen] = React.useState(false)
 
-    handleChange = (e) => {
-        console.log(this.state)
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+console.log(props.gif)
+return (
+    
+<Modal onClose={()=> setOpen(false)}
+    onOpen={() => setOpen(true)}
+    open={open}
+    trigger={<i style={{cursor:'pointer'}}className="edit icon"></i>}>
+     <Modal.Content>
+         <EditForm gif={props.gif} baseUrl={props.baseUrl} name={props.name} url={props.url} getGifs={props.getGifs}/>
+     </Modal.Content>
+    <Modal.Actions>
+        <Button color='black' onClick={()=> setOpen(false)}>
+            Close
+        </Button>
+    </Modal.Actions>
+</Modal>
 
-     handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(this.props.baseUrl)
-        //fetch and update props{addBookmark in app}
-        console.log(this.state.name, this.props.gif._id)
-        console.log(this.state.description)
-        fetch(`${this.props.baseUrl}/gifs/${this.props.gif._id}`,  {
-            method: 'PUT', 
-            body: JSON.stringify({
-                //below is where the other attributes get put...
-                name: this.state.name,
-                url: this.state.url,
-                description: this.state.description,
-                id: this.props.gif._id
-            }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-        }).then ( res => {
-            return res.json()
-        }).then ( data => {
-            this.props.getGifs()
-        }).catch(error => console.error)
-    }
-
-  
-
-    render() {
-        console.log(this.state)
-        return (
-            <>
-            <form onSubmit={ (e) => this.handleSubmit(e)}>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" onChange={ (e) => this.handleChange(e)} value={this.state.name} placeholder="Name" />
-                <label htmlFor="url">URL:</label>
-                <input type="text" id="url" name="url" onChange={ (e) => this.handleChange(e)} value={this.state.url} placeholder="Url" />
-                <label htmlFor="description">Description:</label>
-                <input type="text" id="description" name="description" onChange={ (e) => this.handleChange(e)} value={this.state.description} placeholder="Description" />
-                <input type="submit" value="Update Gif"/>
-            </form>
-            </>
-        )
-    }
+)
 }
+
