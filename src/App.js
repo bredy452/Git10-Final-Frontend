@@ -21,7 +21,7 @@ let baseUrl = ''
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:3003'
 } else {
-  baseUrl = 'hhttps://p3sandboxreact.herokuapp.com'
+  baseUrl = 'https://p3sandboxreact.herokuapp.com'
 }
 
 export default class App extends Component {
